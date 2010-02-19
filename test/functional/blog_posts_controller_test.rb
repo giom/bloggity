@@ -13,7 +13,7 @@ class BlogPostsControllerTest < ActionController::TestCase
 		get action_hash[:action], action_hash
 		assert_response :success
 		assert_equal assigns(:blog_post), blog_post
-		assert_equal assigns(:blog_posts).size, BlogPost.count(:conditions => { :blog_id => blog_post.blog_id, :is_complete => true })
+		assert_equal assigns(:recent_posts).size, BlogPost.count(:conditions => { :blog_id => blog_post.blog_id, :is_complete => true })
 		assert_equal assigns(:blog_id), blog_post.blog_id
 	end
 

@@ -23,7 +23,7 @@ class BlogPostsController < ApplicationController
 		end
 		
 		@page_name = @blog.title
-    
+
 		respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @blog_posts }
@@ -53,7 +53,7 @@ class BlogPostsController < ApplicationController
 		@recent_posts = recent_posts(blog_show_params)
 		@blog_post = BlogPost.find(:first, :conditions => ["id = ? OR url_identifier = ?", params[:id], params[:id]])
 
-		if !@blog_post || (!@blog_post.is_complete && !current_user.can_blog?(@blog_post.blog_id))
+		if !@blog_post || (!@blog_post.is_complete && !current_user.try(:can_blog?, @blog_post.blog_id))
 			@blog_post = nil
 			flash[:error] = "You do not have permission to see this blog."
 			return (redirect_to( :action => 'index' ))

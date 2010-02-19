@@ -43,7 +43,7 @@ class BlogPostsController < ApplicationController
 		@image = BlogAsset.new(image_params)
 		@image.blog_post_id = image_params[:blog_post_id] # Can't mass-assign attributes of attachment_fu, so we'll set it manually here
 		@image.save!
-		render :text => @image.public_filename
+		render :text => @image.file.url
 	end
 	
   # GET /blog_posts/1

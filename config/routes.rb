@@ -9,5 +9,5 @@ ActionController::Routing::Routes.draw do |map|
 	
 	map.connect 'blog/:blog_url_id_or_id', :controller => 'blog_posts', :action => 'index'
 	map.connect 'blog/:blog_url_id_or_id/:id', :controller => 'blog_posts', :action => 'show'
-	map.connect 'blog', :controller => 'blog_posts', :action => 'index', :blog_url_id_or_id => 'main'
+	map.connect 'blog', :controller => 'blog_posts', :action => 'index'
 end
